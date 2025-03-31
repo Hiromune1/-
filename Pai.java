@@ -7,6 +7,8 @@ public class Pai {
     public Pai() {
         this.paiTypes = new ArrayList<String>();
 
+        // review: addではなくて = { ... }って感じで一括で宣言した方がいい
+        // review: Paiクラスに定義してほしいのは複数の牌の情報ではなくて、Paiに共通する動作や１つの牌情報なので、牌の情報を作成するのはYamaの方がいいかも
         // 牌を追加する
         paiTypes.add("1萬");
         paiTypes.add("9萬");
