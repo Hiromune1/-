@@ -2,30 +2,30 @@
 
 import java.util.ArrayList;
 import java.util.Collections;
+
 // review: 捨て牌のクラスが必要
 public class Yama {
-    ArrayList<String> paiList;
+    private ArrayList<Pai> yamaList; // 牌山を管理するリストを作成
 
-    public Yama(Pai pai) {
-        this.paiList = new ArrayList<String>();
-        ArrayList<String> paiTypes = pai.getPaiTypes();
-        
-        // review: ここで牌を作成する処理を追加する
+    // 牌山を生成する
+    public Yama(ArrayList<Pai> paiList) {
+
+        yamaList = new ArrayList<>(); // 山札を初期化
 
         // 牌の種類を4枚ずついれて合計52枚にする
-        for (int j = 0; j < paiTypes.size(); j++) {
-            String paiType = paiTypes.get(j);
-
-            for (int i = 0; i < 4; i++) {
-                paiList.add(paiType);
+        for (int j = 0; j < 4; j++) {
+            for (Pai pai : paiList) {
+                yamaList.add(new Pai(pai.getType()));
             }
         }
         // 山をシャッフルする
-        Collections.shuffle(paiList);
+        Collections.shuffle(yamaList);
 
     }
 
-    public ArrayList<String> getPaiList() {
-        return paiList;
+    // 山札を取得するメソッド
+    public ArrayList<Pai> getYamaList() {
+        return yamaList;
     }
+
 }
