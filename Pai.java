@@ -1,6 +1,6 @@
 
 public class Pai {
-    String type;
+    private String type;    // review:特別な理由がない場合はprivateで
 
     public Pai(String type) { // 牌の種類を受け取って初期化
         this.type = type;

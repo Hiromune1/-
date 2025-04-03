@@ -10,6 +10,9 @@ public class Player {
 
         // 山札から14枚引いて手牌に追加する
         for (int i = 0; i < 14; i++) {
+            // review:以下2分は次の一行で書けちゃう
+            // tehai.add(yamaList.remove(0))
+            // yamaList.remove(0)の値をその後も使いたい場合は変数でOK
             Pai drawnPai = yamaList.remove(0); // 山札から1枚引く(先頭から取り除く)
             tehai.add(drawnPai); // 手牌に追加
         }

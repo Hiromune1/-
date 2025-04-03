@@ -26,6 +26,7 @@ public class GameManager {
         showTehai();
     }
 
+    // review:手牌はプレイヤーごとに持っていると思うので、Playerクラスに宣言
     // 手牌を表示するメソッド
     private void showTehai() {
         System.out.println("配られた手牌：");
