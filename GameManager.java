@@ -20,17 +20,18 @@ public class GameManager {
             paiList.add(pai);
         }
         this.yama = new Yama(paiList); // 山札を生成
-        this.player = new Player(yamaList);
+        this.player = new Player(yama);
+
+        // 手牌を並び替える
+        player.sortTehai();
 
         // 手牌を表示
-        showTehai();
+        player.showTehai();
+
+        // 捨てる牌を選ばせる
+        System.out.println();
+        player.discardPai();
+
     }
 
-    // 手牌を表示するメソッド
-    private void showTehai() {
-        System.out.println("配られた手牌：");
-        for (Pai pai : player.getTehai()) {
-            System.out.print(pai.getType() + "  ");
-        }
-    }
 }
