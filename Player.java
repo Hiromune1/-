@@ -32,7 +32,7 @@ public class Player {
     public List<Pai> drawPai(List<Pai> removedTehai, List<Pai> shuffledYama) { // 牌を山から引く(ここの設計ダメ)
         removedTehai.add(shuffledYama.get(0));
         List<Pai> createdTehai = new ArrayList<>(removedTehai);
-        return createdTehai;
+        return createdTehai;    // review: removedTehaiをそのまま返してもいいのでは
     }
 
     public List<Pai> discardPai(List<Pai> createdTehai, Scanner scanner) { // 牌を捨てる
@@ -43,7 +43,7 @@ public class Player {
             if (createdTehai.get(i).getPaiName().equals(discardPai)) {
                 createdTehai.remove(i);
                 List<Pai> removedTehai = new ArrayList<>(createdTehai);
-                return removedTehai;
+                return removedTehai;    // review: createdTehaiをそのまま返してもいいのでは
             }
         }
         System.out.println("正しい牌を入力してください");
