@@ -1,37 +1,33 @@
-//ゲーム全体の流れを管理するクラス
-
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+import java.util.Map;
+import java.util.HashMap;
 
 public class GameManager {
-    private Pai pai; // 牌を管理
-    private Yama yama; // 山を管理
-    private Player player; // プレイヤーを管理
-    private ArrayList<Pai> paiList; // 牌インスタンスの種類を管理
 
-    // ゲームの開始処理をまとめたメソッド
-    public void startGame() {
-        paiList = new ArrayList<>(); // arrayListを初期化
-        String[] paiTypes = Pai.getPaiTypes(); // Paiクラスの静的メソッドから牌の種類を取得
+    private List<Pai> yama;
 
-        // 各種類ごとにインスタンスを生成してpaiListに追加
-        for (int i = 0; i < paiTypes.length; i++) {
-            String type = paiTypes[i];
-            Pai pai = new Pai(type);
-            paiList.add(pai);
+    public void createYama() { // 牌山を作る
+        this.yama = new ArrayList<>();
+    }
+
+    public List<Pai> createPai(Map<Integer, String> paiTypes) { // 牌を作って牌山に保存
+        for (Integer key : paiTypes.keySet()) {
+            String value = paiTypes.get(key);
+            for (int i = 0; i < 4; i++) {
+                Pai pai = new Pai(value, key);
+                yama.add(pai);
+            }
         }
-        this.yama = new Yama(paiList); // 山札を生成
-        this.player = new Player(yama);
+        List<Pai> addedYama = new ArrayList<>(yama);
+        return addedYama;
+    }
 
-        // 手牌を並び替える
-        player.sortTehai();
-
-        // 手牌を表示
-        player.showTehai();
-
-        // 捨てる牌を選ばせる
-        System.out.println();
-        player.discardPai();
-
+    public List<Pai> shuffleYama(List<Pai> addedYama) { // 牌山の中身をシャッフルする
+        Collections.shuffle(addedYama);
+        List<Pai> shuffledYama = new ArrayList<>(addedYama);
+        return shuffledYama;
     }
 
 }
