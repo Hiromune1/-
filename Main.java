@@ -6,11 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-<<<<<<< HEAD
-        GameManager gm = new GameManager(); // review: 先頭を小文字にしたgameManagerの方がいい
-=======
         GameManager gameManager = new GameManager();
->>>>>>> fce2a3b (Playerクラスらを改善)
 
         Map<Integer, String> paiTypes = new HashMap<Integer, String>();
         // review:長いからどこかで関数化してもいいかもね
@@ -33,24 +29,6 @@ public class Main {
         List<Pai> shuffledYama = gameManager.shuffleYama(addedYama);
 
         Player player = new Player();
-<<<<<<< HEAD
-        /* 
-            review:
-            今の書き方だと、playerインスタンスを用意しているにもかかわらず、手札をcreatedTehaiの配列で管理している。
-            そのため、一つしか管理できない(将来的に複数ユーザにした時に困る)＋playerインスタンスを作成した意味があまりない
-            理想としてはPlayer.tehaiで手牌を管理する、showTehaiやdiscardPaiなどの引数に現在の牌を渡さず、
-            関数内でthis.tehaiを呼び出して自己完結するようにする。
-        */
-        List<Pai> createdTehai = player.createTehai(shuffledYama);
-        player.showTehai(createdTehai);
-
-        Scanner scanner = new Scanner(System.in);   // review:各場所で定義でわざわざ引数で渡さなくていい
-
-        List<Pai> removedTehai = player.discardPai(createdTehai, scanner);
-
-        createdTehai = player.drawPai(removedTehai, shuffledYama);
-        player.showTehai(createdTehai);
-=======
         player.createTehai(shuffledYama);
         player.showTehai();
 
@@ -58,7 +36,6 @@ public class Main {
 
         player.drawPai(shuffledYama);
 
->>>>>>> fce2a3b (Playerクラスらを改善)
     }
 
 }

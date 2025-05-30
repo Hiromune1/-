@@ -7,18 +7,6 @@ import java.util.HashMap;
 public class GameManager {
 
     private List<Pai> yama;
-<<<<<<< HEAD
-    /* 
-     * review: 
-     * コメントのつけ方
-     * 関数は関数の前がいい
-     * for, whileは前か後がいい
-     * 変数は同じ行か前がいい
-     * 処理の説明はコメントが10文字程度なら同じ行、長ければ前がいい
-     */
-=======
-
->>>>>>> fce2a3b (Playerクラスらを改善)
     // 牌山を作る
     public void createYama() {
         this.yama = new ArrayList<>();

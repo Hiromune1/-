@@ -1,13 +1,26 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+/*
+ * review
+ * this.tehaiで書かせてきたが基本的に省略して記述する
+ * 以下の場合のように同じ変数が並んだときは宣言する。
+ * 例：
+ * public setTehai(List<Pai> tehai) {
+ *  this.tehai = tehai
+ *  （メンバー変数の手牌 = 引数の手牌）
+ * }
+ * 
+ * それと、コンフリクト（変更の競合）が起きていたため、プルしてからコミットは絶対！！！！！！！！
+ */
 
 public class Player {
-    private List<Pai> tehai;
+    // review:初期宣言はここでいい、値を入れるならコンストラクタ
+    private List<Pai> tehai = new ArrayList<>();
 
-    public Player() {
-        this.tehai = new ArrayList<>();
-    }
+    // public Player() {
+    //     this.tehai = new ArrayList<>();
+    // }
 
     Scanner scanner = new Scanner(System.in);
 
@@ -36,16 +49,9 @@ public class Player {
         System.out.println();
     }
 
-<<<<<<< HEAD
-    public List<Pai> drawPai(List<Pai> removedTehai, List<Pai> shuffledYama) { // 牌を山から引く(ここの設計ダメ)
-        removedTehai.add(shuffledYama.get(0));
-        List<Pai> createdTehai = new ArrayList<>(removedTehai);
-        return createdTehai;    // review: removedTehaiをそのまま返してもいいのでは
-=======
     // 牌を山から引く
     public void drawPai(List<Pai> shuffledYama) {
         this.tehai.add(shuffledYama.get(0));
->>>>>>> fce2a3b (Playerクラスらを改善)
     }
 
     // 牌を捨てる
@@ -53,17 +59,9 @@ public class Player {
         System.out.println("捨てる牌を選んで下さい");
         String discardPai = scanner.nextLine().trim();
 
-<<<<<<< HEAD
-        for (int i = 0; i < createdTehai.size(); i++) {
-            if (createdTehai.get(i).getPaiName().equals(discardPai)) {
-                createdTehai.remove(i);
-                List<Pai> removedTehai = new ArrayList<>(createdTehai);
-                return removedTehai;    // review: createdTehaiをそのまま返してもいいのでは
-=======
         for (int i = 0; i < tehai.size(); i++) {
             if (this.tehai.get(i).getPaiName().equals(discardPai)) {
                 this.tehai.remove(i);
->>>>>>> fce2a3b (Playerクラスらを改善)
             }
         }
         System.out.println("正しい牌を入力してください");
