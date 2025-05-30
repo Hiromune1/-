@@ -9,19 +9,26 @@ public class Player {
         this.tehai = new ArrayList<>();
     }
 
-    public List<Pai> createTehai(List<Pai> shuffledYama) { // 牌山から14枚引いて手牌をつくる
-        for (int i = 0; i < 14; i++) {
-            tehai.add(shuffledYama.get(i));
-        }
-        List<Pai> createdTehai = new ArrayList<>(tehai);
-        return createdTehai;
+    Scanner scanner = new Scanner(System.in);
+
+    // 手牌を得る
+    public List<Pai> getTehai() {
+        return tehai;
     }
 
-    public void showTehai(List<Pai> createdTehai) { // 手牌を並べて表示する (ちょっとGPTの力借りた)
+    // 牌山から14枚引いて手牌を作る
+    public void createTehai(List<Pai> shuffledYama) {
+        for (int i = 0; i < 14; i++) {
+            this.tehai.add(shuffledYama.get(i));
+        }
+    }
+
+    // 手牌を並べて表示する
+    public void showTehai() {
         for (int key = 1; key <= 13; key++) {
             for (int j = 0; j < 14; j++) {
-                if (createdTehai.get(j).getKey() == key) {
-                    System.out.print(createdTehai.get(j) + " ");
+                if (this.tehai.get(j).getKey() == key) {
+                    System.out.print(this.tehai.get(j) + " ");
                 }
             }
         }
@@ -29,24 +36,36 @@ public class Player {
         System.out.println();
     }
 
+<<<<<<< HEAD
     public List<Pai> drawPai(List<Pai> removedTehai, List<Pai> shuffledYama) { // 牌を山から引く(ここの設計ダメ)
         removedTehai.add(shuffledYama.get(0));
         List<Pai> createdTehai = new ArrayList<>(removedTehai);
         return createdTehai;    // review: removedTehaiをそのまま返してもいいのでは
+=======
+    // 牌を山から引く
+    public void drawPai(List<Pai> shuffledYama) {
+        this.tehai.add(shuffledYama.get(0));
+>>>>>>> fce2a3b (Playerクラスらを改善)
     }
 
-    public List<Pai> discardPai(List<Pai> createdTehai, Scanner scanner) { // 牌を捨てる
+    // 牌を捨てる
+    public void discardPai() {
         System.out.println("捨てる牌を選んで下さい");
         String discardPai = scanner.nextLine().trim();
 
+<<<<<<< HEAD
         for (int i = 0; i < createdTehai.size(); i++) {
             if (createdTehai.get(i).getPaiName().equals(discardPai)) {
                 createdTehai.remove(i);
                 List<Pai> removedTehai = new ArrayList<>(createdTehai);
                 return removedTehai;    // review: createdTehaiをそのまま返してもいいのでは
+=======
+        for (int i = 0; i < tehai.size(); i++) {
+            if (this.tehai.get(i).getPaiName().equals(discardPai)) {
+                this.tehai.remove(i);
+>>>>>>> fce2a3b (Playerクラスらを改善)
             }
         }
         System.out.println("正しい牌を入力してください");
-        return createdTehai;
     }
 }

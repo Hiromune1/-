@@ -6,7 +6,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+<<<<<<< HEAD
         GameManager gm = new GameManager(); // review: 先頭を小文字にしたgameManagerの方がいい
+=======
+        GameManager gameManager = new GameManager();
+>>>>>>> fce2a3b (Playerクラスらを改善)
 
         Map<Integer, String> paiTypes = new HashMap<Integer, String>();
         // review:長いからどこかで関数化してもいいかもね
@@ -24,11 +28,12 @@ public class Main {
         paiTypes.put(12, "發");
         paiTypes.put(13, "中");
 
-        gm.createYama();
-        List<Pai> addedYama = gm.createPai(paiTypes);
-        List<Pai> shuffledYama = gm.shuffleYama(addedYama);
+        gameManager.createYama();
+        List<Pai> addedYama = gameManager.createPai(paiTypes);
+        List<Pai> shuffledYama = gameManager.shuffleYama(addedYama);
 
         Player player = new Player();
+<<<<<<< HEAD
         /* 
             review:
             今の書き方だと、playerインスタンスを用意しているにもかかわらず、手札をcreatedTehaiの配列で管理している。
@@ -45,6 +50,15 @@ public class Main {
 
         createdTehai = player.drawPai(removedTehai, shuffledYama);
         player.showTehai(createdTehai);
+=======
+        player.createTehai(shuffledYama);
+        player.showTehai();
+
+        player.discardPai();
+
+        player.drawPai(shuffledYama);
+
+>>>>>>> fce2a3b (Playerクラスらを改善)
     }
 
 }
