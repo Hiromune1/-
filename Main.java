@@ -30,12 +30,17 @@ public class Main {
 
         Player player = new Player();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         player.createTehai(shuffledYama);
         player.showTehai();
 
         player.discardPai();
 
         player.drawPai(shuffledYama);
+=======
+        player.createTehai(shuffledYama); // 山から14枚持ってきて手牌つくる
+        player.showTehai(); // 手牌表示
+>>>>>>> Stashed changes
 =======
         player.createTehai(shuffledYama); // 山から14枚持ってきて手牌つくる
         player.showTehai(); // 手牌表示

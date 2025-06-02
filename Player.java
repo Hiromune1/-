@@ -52,8 +52,13 @@ public class Player {
 
     // 牌を山から引く
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public void drawPai(List<Pai> shuffledYama) {
         this.tehai.add(shuffledYama.get(0));
+=======
+    public void drawPai(List<Pai> shuffledYama, int yamaNumber) {
+        tehai.add(shuffledYama.get(yamaNumber));
+>>>>>>> Stashed changes
 =======
     public void drawPai(List<Pai> shuffledYama, int yamaNumber) {
         tehai.add(shuffledYama.get(yamaNumber));
@@ -65,14 +70,20 @@ public class Player {
         Integer number = scanner.nextInt();
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         for (int i = 0; i < tehai.size(); i++) {
             if (this.tehai.get(i).getPaiName().equals(discardPai)) {
                 this.tehai.remove(i);
 =======
+=======
+>>>>>>> Stashed changes
         for (int i = 0; i < 14; i++) {
             if (tehai.get(i).getKey() == number) {
                 tehai.remove(i);
                 break;
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
             }
         }

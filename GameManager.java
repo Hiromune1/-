@@ -8,6 +8,10 @@ public class GameManager {
 
     private List<Pai> yama;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes
