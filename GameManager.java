@@ -7,6 +7,10 @@ import java.util.HashMap;
 public class GameManager {
 
     private List<Pai> yama;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     // 牌山を作る
     public void createYama() {
         this.yama = new ArrayList<>();
@@ -30,6 +34,24 @@ public class GameManager {
         Collections.shuffle(addedYama);
         List<Pai> shuffledYama = new ArrayList<>(addedYama);
         return shuffledYama;
+    }
+
+    // 牌に対応した数字を出力する
+    public void showPaiAndNumber(Map<Integer, String> paiTypes) {
+        for (int key = 1; key <= 13; key++) {
+            String word = paiTypes.get(key);
+            System.out.print(word + "→ " + key + " ");
+        }
+
+        System.out.println();
+    }
+
+    // 手牌が上がり形になっているか判定する
+    public void  judegeTehai() {
+        boolean result = false;
+        for (false) {
+            player.tumoMovement()
+        }
     }
 
 }
