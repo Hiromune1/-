@@ -2,26 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-/*
- * review
- * this.tehaiで書かせてきたが基本的に省略して記述する
- * 以下の場合のように同じ変数が並んだときは宣言する。
- * 例：
- * public setTehai(List<Pai> tehai) {
- *  this.tehai = tehai
- *  （メンバー変数の手牌 = 引数の手牌）
- * }
- * 
- * それと、コンフリクト（変更の競合）が起きていたため、プルしてからコミットは絶対！！！！！！！！
- */
 
 public class Player {
-    // review:初期宣言はここでいい、値を入れるならコンストラクタ
-    private List<Pai> tehai = new ArrayList<>();
 
-    // public Player() {
-    //     this.tehai = new ArrayList<>();
-    // }
+    private List<Pai> tehai = new ArrayList<>();
 
     Scanner scanner = new Scanner(System.in);
 
@@ -51,40 +35,18 @@ public class Player {
     }
 
     // 牌を山から引く
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    public void drawPai(List<Pai> shuffledYama) {
-        this.tehai.add(shuffledYama.get(0));
-=======
     public void drawPai(List<Pai> shuffledYama, int yamaNumber) {
         tehai.add(shuffledYama.get(yamaNumber));
->>>>>>> Stashed changes
-=======
-    public void drawPai(List<Pai> shuffledYama, int yamaNumber) {
-        tehai.add(shuffledYama.get(yamaNumber));
->>>>>>> Stashed changes
     }
 
     // 牌を捨てる
     public void discardPai() {
         Integer number = scanner.nextInt();
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        for (int i = 0; i < tehai.size(); i++) {
-            if (this.tehai.get(i).getPaiName().equals(discardPai)) {
-                this.tehai.remove(i);
-=======
-=======
->>>>>>> Stashed changes
         for (int i = 0; i < 14; i++) {
             if (tehai.get(i).getKey() == number) {
                 tehai.remove(i);
                 break;
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
             }
         }
     }

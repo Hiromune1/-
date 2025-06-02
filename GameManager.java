@@ -7,14 +7,7 @@ import java.util.HashMap;
 public class GameManager {
 
     private List<Pai> yama;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
     // 牌山を作る
     public void createYama() {
         this.yama = new ArrayList<>();
