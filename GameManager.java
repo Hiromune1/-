@@ -5,36 +5,34 @@ import java.util.Map;
 import java.util.HashMap;
 
 public class GameManager {
+    public Map<Integer, String> paiTypes;
 
-    private List<Pai> yama;
+    // 牌に対応した数字を設定する
+    public void putPaiTypes() {
+        this.paiTypes = new HashMap<Integer, String>();
 
-    // 牌山を作る
-    public void createYama() {
-        this.yama = new ArrayList<>();
+        paiTypes.put(1, "一萬");
+        paiTypes.put(2, "九萬");
+        paiTypes.put(3, "1筒");
+        paiTypes.put(4, "9筒");
+        paiTypes.put(5, "1索");
+        paiTypes.put(6, "9索");
+        paiTypes.put(7, "東");
+        paiTypes.put(8, "南");
+        paiTypes.put(9, "西");
+        paiTypes.put(10, "北");
+        paiTypes.put(11, "白");
+        paiTypes.put(12, "發");
+        paiTypes.put(13, "中");
     }
 
-    // 牌を作って牌山に保存
-    public List<Pai> createPai(Map<Integer, String> paiTypes) {
-        for (Integer key : paiTypes.keySet()) {
-            String value = paiTypes.get(key);
-            for (int i = 0; i < 4; i++) {
-                Pai pai = new Pai(value, key);
-                yama.add(pai);
-            }
-        }
-        List<Pai> addedYama = new ArrayList<>(yama);
-        return addedYama;
-    }
-
-    // 牌山の中身をシャッフルする
-    public List<Pai> shuffleYama(List<Pai> addedYama) {
-        Collections.shuffle(addedYama);
-        List<Pai> shuffledYama = new ArrayList<>(addedYama);
-        return shuffledYama;
+    // 牌の種類を返す
+    public Map<Integer, String> getPaiTyps() {
+        return paiTypes;
     }
 
     // 牌に対応した数字を出力する
-    public void showPaiAndNumber(Map<Integer, String> paiTypes) {
+    public void showPaiAndNumber() {
         for (int key = 1; key <= 13; key++) {
             String word = paiTypes.get(key);
             System.out.print(word + "→ " + key + " ");
@@ -44,11 +42,23 @@ public class GameManager {
     }
 
     // 手牌が上がり形になっているか判定する
-    public void  judegeTehai() {
-        boolean result = false;
-        for (false) {
-            player.tumoMovement()
-        }
-    }
+    public boolean judegeTehai(List<Pai> tehai) {
 
+        for (int key = 1; key <= 13; key++) {
+            boolean found = false;
+
+            for (Pai pai : tehai) {
+                if (pai.getKey() == key) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                return false;
+            }
+        }
+        System.out.println("国士無双！");
+        return true;
+    }
 }

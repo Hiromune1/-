@@ -4,8 +4,11 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Player {
+    private List<Pai> tehai;
 
-    private List<Pai> tehai = new ArrayList<>();
+    public Player() {
+        this.tehai = new ArrayList<>();
+    }
 
     Scanner scanner = new Scanner(System.in);
 
@@ -15,18 +18,19 @@ public class Player {
     }
 
     // 牌山から14枚引いて手牌を作る
-    public void createTehai(List<Pai> shuffledYama) {
+    public List<Pai> createTehai(Yama yama) {
         for (int i = 0; i < 14; i++) {
-            tehai.add(shuffledYama.get(i));
+            tehai.add(yama.getYama().get(i));
         }
+        return tehai;
     }
 
     // 手牌を並べて表示する
     public void showTehai() {
         for (int key = 1; key <= 13; key++) {
             for (int j = 0; j < 14; j++) {
-                if (tehai.get(j).getKey() == key) {
-                    System.out.print(tehai.get(j) + " ");
+                if (this.tehai.get(j).getKey() == key) {
+                    System.out.print(this.tehai.get(j) + " ");
                 }
             }
         }
@@ -35,8 +39,9 @@ public class Player {
     }
 
     // 牌を山から引く
-    public void drawPai(List<Pai> shuffledYama, int yamaNumber) {
-        tehai.add(shuffledYama.get(yamaNumber));
+    public void drawPai(Yama yama) {
+        Pai drawn = yama.getYama().remove(0);
+        tehai.add(drawn);
     }
 
     // 牌を捨てる
@@ -52,12 +57,19 @@ public class Player {
     }
 
     // 一連のツモ動作
-    public void tumoMovement(GameManager gameManager, Map<Integer, String> paiTypes, List<Pai> shuffledYama,
-            int yamaNumber) {
-        System.out.println("捨てる牌に対応した番号を入力してください");
-        gameManager.showPaiAndNumber(paiTypes);
-        discardPai();
-        drawPai(shuffledYama, yamaNumber);
-        showTehai();
+    public boolean tumoMovement(GameManager gameManager, Yama yama) {
+        System.out.println(
+                "========================================================================================");
+        this.showTehai();
+
+        if (gameManager.judegeTehai(tehai)) {
+            return true;
+        }
+        System.out.println();
+        gameManager.showPaiAndNumber();
+        this.discardPai();
+        this.drawPai(yama);
+
+        return false;
     }
 }
